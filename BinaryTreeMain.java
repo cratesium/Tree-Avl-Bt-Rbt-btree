@@ -143,7 +143,30 @@ System.out.println();
         }
     }
  }
+ public int heightOfTree(Node head){
+    if(head==null) return 0;
+    int leftHeight=0;
+    int rightHeight=0;
+     if(head.left!=null){
+         leftHeight = 1+heightOfTree(head.left);
 
+     }
+
+     if (head.right!=null) {
+        rightHeight= 1+heightOfTree(head.right);
+
+     }
+     return Math.max(leftHeight, rightHeight);
+
+
+ }
+
+
+ public  int countNodes(Node head) {
+        
+    if(head==null) return 0;
+    return 1+ countNodes(head.left)+countNodes(head.right);
+}
 
 
 }
@@ -160,6 +183,7 @@ public static void main(String[] args) {
     System.out.println();
     tree.levelOrderInSameLine(head);
     tree.levelOrderInDiffLine(head);
+    System.out.println("height of tree is "+tree.heightOfTree(head));
    
 }
 }
